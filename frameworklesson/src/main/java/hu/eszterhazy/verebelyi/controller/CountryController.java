@@ -36,6 +36,15 @@ public class CountryController {
     ){
                 countryQueryService.addCountry(new Country(country));
     }
+
+    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    public void modifyCountry(
+            @RequestParam(name = "id", required = true) Long id,
+            @RequestParam(name = "country", required = true) String name
+    ){
+        countryQueryService.modifyCountry(id, name);
+    }
+
     @Transactional
     @RequestMapping(value="/delete", method =  RequestMethod.POST)
     public void deleteCountry(

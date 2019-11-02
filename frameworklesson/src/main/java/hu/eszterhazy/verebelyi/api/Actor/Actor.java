@@ -2,7 +2,7 @@ package hu.eszterhazy.verebelyi.api.Actor;
 
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="actor")
@@ -42,11 +42,11 @@ public class Actor {
         this.lastName = lastName;
     }
 
-    public Date getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
@@ -60,11 +60,12 @@ public class Actor {
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "last_update")
-    private Date lastUpdate;
+    private Timestamp lastUpdate;
 
-    public Actor(String firstName, String lastName) {
+    public Actor(String firstName, String lastName, Timestamp last_update) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.lastUpdate = last_update;
     }
 
     public Actor() {

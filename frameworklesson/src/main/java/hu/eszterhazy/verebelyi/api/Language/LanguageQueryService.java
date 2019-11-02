@@ -9,4 +9,5 @@ public interface LanguageQueryService {
     Collection<Language> findByName(String name);
     void addLanguage(Language language);
     void deleteLanguageById(Long id);
+    void modifyLanguage(Long id, String name);
 }

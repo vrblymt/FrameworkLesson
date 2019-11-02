@@ -22,6 +22,7 @@ public class Address {
     private String phone;
 
     public Address(){
+
     }
     public Address(String address, String district, Long cityId, String postalCode, String phone) {
         this.address = address;

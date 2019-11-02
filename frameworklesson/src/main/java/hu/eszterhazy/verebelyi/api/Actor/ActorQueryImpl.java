@@ -28,7 +28,7 @@ public class ActorQueryImpl implements ActorQueryService {
 
     @Override
     public void ModifyActorById(Long id, String firstName, String lastName) {
-        Actor actor = (Actor) actorRepository.findByIdEquals(id);
+        Actor actor = (Actor) actorRepository.findByIdEquals(id).get(0);
         actor.setId(id);
         actor.setLastName(lastName);
         actor.setFirstName(firstName);

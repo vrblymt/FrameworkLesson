@@ -4,14 +4,13 @@ import hu.eszterhazy.verebelyi.api.Actor.ActorQueryImpl;
 import hu.eszterhazy.verebelyi.api.Actor.ActorQueryService;
 import hu.eszterhazy.verebelyi.api.Address.AddressQueryImpl;
 import hu.eszterhazy.verebelyi.api.Address.AddressQueryService;
+import hu.eszterhazy.verebelyi.api.Category.CategoryQueryImpl;
+import hu.eszterhazy.verebelyi.api.Category.CategoryQueryService;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryImpl;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryService;
 import hu.eszterhazy.verebelyi.api.Language.LanguageQueryImpl;
 import hu.eszterhazy.verebelyi.api.Language.LanguageQueryService;
-import hu.eszterhazy.verebelyi.dao.ActorRepository;
-import hu.eszterhazy.verebelyi.dao.AddressRepository;
-import hu.eszterhazy.verebelyi.dao.CountryRepository;
-import hu.eszterhazy.verebelyi.dao.LanguageRepository;
+import hu.eszterhazy.verebelyi.dao.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -32,5 +31,10 @@ public class WebConfiguration {
     @Bean(name="LanguageQueryService")
     public LanguageQueryService languageQueryService(LanguageRepository languageRepository){
         return new LanguageQueryImpl(languageRepository);
+    }
+
+    @Bean(name="CategoryQueryService")
+    public CategoryQueryService categoryQueryService(CategoryRepository categoryRepository){
+        return new CategoryQueryImpl(categoryRepository);
     }
 }

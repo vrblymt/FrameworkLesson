@@ -1,23 +1,27 @@
-package hu.eszterhazy.verebelyi.api.Language;
+package hu.eszterhazy.verebelyi.api.Category;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="language")
-public class Language {
-
+public class Category {
     @Id
-    @Column(name = "language_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="category_id", nullable = false)
     private Long id;
     private String name;
-    @Column(name = "last_update", nullable = false)
     private Timestamp last_update;
+
+    public Category() {}
+
+    public Category(String name) {
+        this.name = name;
+    }
 
     @Override
     public String toString() {
-        return "Language{" +
+        return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", last_update=" + last_update +
@@ -46,12 +50,5 @@ public class Language {
 
     public void setLast_update(Timestamp last_update) {
         this.last_update = last_update;
-    }
-
-    public Language(String name) {
-        this.name = name;
-    }
-
-    public Language() {
     }
 }

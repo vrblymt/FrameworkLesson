@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 
 @RestController
 @RequestMapping(value="/actors")
@@ -27,7 +29,8 @@ public class ActorController {
     public void addNewActor(
             @RequestParam(name = "firstName", required = true) String firstName,
             @RequestParam(name = "lastName", required = true) String lastName){
-        actorQueryService.addActor(new Actor(firstName, lastName));
+        Date date = new Date();
+        actorQueryService.addActor(new Actor(firstName, lastName, new Timestamp(date.getTime())));
     }
     @Transactional
     @RequestMapping(value="/modify", method = RequestMethod.POST)

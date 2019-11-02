@@ -37,4 +37,11 @@ public class LanguageQueryImpl implements LanguageQueryService{
     public void deleteLanguageById(Long id) {
         languageRepository.deleteByIdEquals(id);
     }
+
+    @Override
+    public void modifyLanguage(Long id, String name) {
+        Language newLanguage = languageRepository.findByIdEquals(id).get(0);
+        newLanguage.setName(name);
+        languageRepository.save(newLanguage);
+    }
 }

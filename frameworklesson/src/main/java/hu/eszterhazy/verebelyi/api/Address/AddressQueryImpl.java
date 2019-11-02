@@ -30,4 +30,29 @@ public class AddressQueryImpl implements AddressQueryService {
     public void deleteAddress(Long id) {
         addressRepository.deleteAddressByIdEquals(id);
     }
+
+    @Override
+    public void modifyAddress(Long id, String address1, String address2, String district, Long cityId, String postalcode, String phone) {
+        Address address = addressRepository.findAddressByIdEquals(id).get(0);
+        if(address1 != null){
+            address.setAddress(address1);
+        }
+        if(address2 != null) {
+            address.setAddress2(address2);
+        }
+        if(district != null) {
+            address.setDistrict(district);
+        }
+        if(cityId != null) {
+            address.setCityId(cityId);
+        }
+        if(postalcode != null) {
+            address.setPostalCode(postalcode);
+        }
+        if(phone != null) {
+            address.setPhone(phone);
+        }
+
+        addressRepository.save(address);
+    }
 }

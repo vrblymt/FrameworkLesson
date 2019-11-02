@@ -32,6 +32,13 @@ public class CountryQueryImpl implements CountryQueryService {
     }
 
     @Override
+    public void modifyCountry(Long id, String name) {
+        Country country = countryRepository.findByIdEquals(id).get(0);
+        country.setCountry(name);
+        countryRepository.save(country);
+    }
+
+    @Override
     public void deleteCountry(Long id) {
         countryRepository.deleteCountryByIdEquals(id);
     }

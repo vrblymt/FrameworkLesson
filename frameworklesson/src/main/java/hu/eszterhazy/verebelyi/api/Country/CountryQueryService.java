@@ -7,5 +7,6 @@ public interface CountryQueryService {
     Collection<Country> findById(Long id);
     Collection<Country> findByName(String country);
     void addCountry(Country country);
+    void modifyCountry(Long id, String name);
     void deleteCountry(Long id);
 }
