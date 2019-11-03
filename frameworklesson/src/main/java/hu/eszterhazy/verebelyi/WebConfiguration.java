@@ -10,6 +10,8 @@ import hu.eszterhazy.verebelyi.api.City.CityQueryImpl;
 import hu.eszterhazy.verebelyi.api.City.CityQueryService;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryImpl;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryService;
+import hu.eszterhazy.verebelyi.api.Film.FilmQueryImpl;
+import hu.eszterhazy.verebelyi.api.Film.FilmQueryService;
 import hu.eszterhazy.verebelyi.api.Language.LanguageQueryImpl;
 import hu.eszterhazy.verebelyi.api.Language.LanguageQueryService;
 import hu.eszterhazy.verebelyi.dao.*;
@@ -43,5 +45,10 @@ public class WebConfiguration {
     @Bean(name = "CityQueryService")
     public CityQueryService cityQueryService(CityRepository cityRepository){
         return  new CityQueryImpl(cityRepository);
+    }
+
+    @Bean
+    public FilmQueryService filmQueryService(FilmRepository filmRepository){
+        return new FilmQueryImpl(filmRepository);
     }
 }

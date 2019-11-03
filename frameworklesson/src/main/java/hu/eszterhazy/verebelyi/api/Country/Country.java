@@ -10,6 +10,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String country;
+    @Column(name = "last_update")
     private Date last_update;
 
     @Override

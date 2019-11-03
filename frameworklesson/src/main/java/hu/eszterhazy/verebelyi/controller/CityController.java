@@ -3,9 +3,7 @@ package hu.eszterhazy.verebelyi.controller;
 import hu.eszterhazy.verebelyi.api.City.City;
 import hu.eszterhazy.verebelyi.api.City.CityQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -30,5 +28,12 @@ public class CityController {
         }else{
             return cityQueryService.listAll();
         }
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public void deleteById(
+            @RequestParam(name = "id", required = true) Long id
+    ){
+        cityQueryService.deleteById(id);
     }
 }

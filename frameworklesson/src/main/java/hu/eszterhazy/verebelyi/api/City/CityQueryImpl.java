@@ -26,4 +26,9 @@ public class CityQueryImpl implements CityQueryService {
     public Collection<City> findByName(String name) {
         return cityRepository.findByCityContains(name);
     }
+
+    @Override
+    public void deletebyId(Long id) {
+        cityRepository.deleteByIdEquals(id);
+    }
 }
