@@ -6,6 +6,8 @@ import hu.eszterhazy.verebelyi.api.Address.AddressQueryImpl;
 import hu.eszterhazy.verebelyi.api.Address.AddressQueryService;
 import hu.eszterhazy.verebelyi.api.Category.CategoryQueryImpl;
 import hu.eszterhazy.verebelyi.api.Category.CategoryQueryService;
+import hu.eszterhazy.verebelyi.api.City.CityQueryImpl;
+import hu.eszterhazy.verebelyi.api.City.CityQueryService;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryImpl;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryService;
 import hu.eszterhazy.verebelyi.api.Language.LanguageQueryImpl;
@@ -36,5 +38,10 @@ public class WebConfiguration {
     @Bean(name="CategoryQueryService")
     public CategoryQueryService categoryQueryService(CategoryRepository categoryRepository){
         return new CategoryQueryImpl(categoryRepository);
+    }
+
+    @Bean(name = "CityQueryService")
+    public CityQueryService cityQueryService(CityRepository cityRepository){
+        return  new CityQueryImpl(cityRepository);
     }
 }
