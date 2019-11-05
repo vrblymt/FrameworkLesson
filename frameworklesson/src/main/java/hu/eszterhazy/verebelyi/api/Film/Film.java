@@ -1,10 +1,12 @@
 package hu.eszterhazy.verebelyi.api.Film;
 
+import hu.eszterhazy.verebelyi.api.Actor.Actor;
 import hu.eszterhazy.verebelyi.api.Language.Language;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 @Entity
 @Table(name = "film")
@@ -31,6 +33,17 @@ public class Film {
     private String rating;
     @Column(name = "special_features")
     private String specialFeatures;
+
+    public Collection<Actor> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Collection<Actor> films) {
+        this.films = films;
+    }
+
+    @ManyToMany(mappedBy = "actorInFilms")
+    Collection<Actor> films;
 
     public Long getId() {
         return id;
