@@ -28,7 +28,7 @@ public class CityQueryImpl implements CityQueryService {
     }
 
     @Override
-    public void deletebyId(Long id) {
+    public void deleteById(Long id) {
         cityRepository.deleteByIdEquals(id);
     }
 }
