@@ -1,11 +1,7 @@
 package hu.eszterhazy.verebelyi.api.Actor;
 
-
-import hu.eszterhazy.verebelyi.api.Film.Film;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Collection;
 
 @Entity
 @Table(name="actor")
@@ -64,22 +60,6 @@ public class Actor {
     private String lastName;
     @Column(name = "last_update")
     private Timestamp lastUpdate;
-
-    /*public Collection<Film> getActorInFilms() {
-        return actorInFilms;
-    }
-
-    public void setActorInFilms(Collection<Film> actorInFilms) {
-        this.actorInFilms = actorInFilms;
-    }
-
-    @ManyToMany
-    @JoinTable(
-            name = "film_actor",
-            joinColumns = @JoinColumn(name = "actor_id"),
-            inverseJoinColumns = @JoinColumn(name = "film_id")
-    )
-    Collection<Film> actorInFilms;*/
 
     public Actor(String firstName, String lastName, Timestamp last_update) {
         this.firstName = firstName;

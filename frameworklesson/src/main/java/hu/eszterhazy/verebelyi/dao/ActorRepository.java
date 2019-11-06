@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ActorRepository extends CrudRepository<Actor, Long> {
     List<Actor> findByIdEquals(Long id);
+    List<Actor> findByFirstNameContainsOrLastNameContains(String name, String name1);
     void deleteActorByIdEquals(Long id);
 }

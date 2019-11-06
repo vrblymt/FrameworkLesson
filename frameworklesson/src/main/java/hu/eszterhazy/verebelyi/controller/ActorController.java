@@ -17,13 +17,19 @@ public class ActorController {
     @Autowired
     private ActorQueryService actorQueryService;
 
-    @RequestMapping(value={"/", "", "/{actorId}"})
+    @RequestMapping(value={"/", "", "/{actor}"})
     public Collection<Actor> findAll(
-            @PathVariable(name = "actorId", required = false) Long id) {
-            if (id == null || "".equals(id)) {
-                return actorQueryService.allActors();
+            @PathVariable(name = "actor", required = false) String actor) {
+        if(actor != null){
+            try{
+                return actorQueryService.findActorById(Long.decode(actor));
             }
-            return actorQueryService.findActorById(id);
+            catch(NumberFormatException ex){
+                return actorQueryService.findActorByName(actor);
+            }
+        }else {
+            return actorQueryService.allActors();
+        }
     }
     @RequestMapping(value="/add", method = RequestMethod.POST)
     public void addNewActor(

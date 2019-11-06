@@ -22,6 +22,11 @@ public class ActorQueryImpl implements ActorQueryService {
     }
 
     @Override
+    public Collection<Actor> findActorByName(String name) {
+        return actorRepository.findByFirstNameContainsOrLastNameContains(name, name);
+    }
+
+    @Override
     public void addActor(Actor actor) {
         actorRepository.save(actor);
     }
