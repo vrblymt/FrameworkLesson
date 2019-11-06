@@ -13,7 +13,7 @@ import java.util.Collection;
 public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "film_id")
+    @Column(name = "film_id", nullable = false)
     private Long id;
     private String title;
     private String description;
@@ -34,7 +34,7 @@ public class Film {
     @Column(name = "special_features")
     private String specialFeatures;
 
-    public Collection<Actor> getFilms() {
+    /*public Collection<Actor> getFilms() {
         return films;
     }
 
@@ -43,7 +43,7 @@ public class Film {
     }
 
     @ManyToMany(mappedBy = "actorInFilms")
-    Collection<Actor> films;
+    Collection<Actor> films;*/
 
     public Long getId() {
         return id;

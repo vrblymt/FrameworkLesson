@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface FilmActorRepository extends CrudRepository<FilmActor, FilmActorId> {
     List<FilmActor> findByFilmActorIdEquals(FilmActorId filmActorId);
+    void deleteByFilmActorIdEquals(FilmActorId filmActorId);
 }

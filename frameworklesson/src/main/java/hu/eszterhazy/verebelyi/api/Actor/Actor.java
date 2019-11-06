@@ -55,7 +55,7 @@ public class Actor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "actor_id")
+    @Column(name = "actor_id", nullable = false)
     private Long id;
 
     @Column(name = "first_name")
@@ -65,7 +65,7 @@ public class Actor {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    public Collection<Film> getActorInFilms() {
+    /*public Collection<Film> getActorInFilms() {
         return actorInFilms;
     }
 
@@ -79,7 +79,7 @@ public class Actor {
             joinColumns = @JoinColumn(name = "actor_id"),
             inverseJoinColumns = @JoinColumn(name = "film_id")
     )
-    Collection<Film> actorInFilms;
+    Collection<Film> actorInFilms;*/
 
     public Actor(String firstName, String lastName, Timestamp last_update) {
         this.firstName = firstName;

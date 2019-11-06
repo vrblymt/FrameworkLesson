@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Embeddable
 public class FilmActorId implements Serializable {
-    @Column(name = "film_id")
+    @Column(name = "film_id", nullable = false)
     Long filmId;
     @Column(name = "actor_id", nullable = false)
     Long actorId;
@@ -40,7 +40,8 @@ public class FilmActorId implements Serializable {
     }
 
     public Long getActorId() {
-        return actorId;
+        return actorId
+                ;
     }
 
     public void setActorId(Long actorId) {
