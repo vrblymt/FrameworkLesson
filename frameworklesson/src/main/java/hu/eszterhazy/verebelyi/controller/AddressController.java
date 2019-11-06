@@ -17,14 +17,20 @@ public class AddressController {
     @Autowired
     private AddressQueryService addressQueryService;
 
-    @RequestMapping(value={"", "/", "/{addressId}"})
+    @RequestMapping(value={"", "/", "/{address}"})
     public Collection<Address> findAll(
-            @PathVariable(name = "addressId", required = false) Long id) {
+            @PathVariable(name = "address", required = false) String address) {
 
-        if (id == null || "".equals(id)) {
+        if(address != null){
+            try{
+                return addressQueryService.findAddressById(Long.decode(address));
+            }
+            catch(NumberFormatException ex){
+                return addressQueryService.findByAddress(address);
+            }
+        }else{
             return addressQueryService.allAddress();
         }
-        return addressQueryService.findAddressById(id);
     }
     @RequestMapping(value="/add", method = RequestMethod.POST)
     public void addNewAddress(

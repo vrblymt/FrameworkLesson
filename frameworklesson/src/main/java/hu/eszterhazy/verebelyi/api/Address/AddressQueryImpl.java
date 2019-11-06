@@ -22,6 +22,11 @@ public class AddressQueryImpl implements AddressQueryService {
     }
 
     @Override
+    public Collection<Address> findByAddress(String address) {
+        return addressRepository.findByAddressContains(address);
+    }
+
+    @Override
     public void addAddress(Address address) {
         addressRepository.save(address);
     }

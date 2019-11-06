@@ -31,6 +31,13 @@ public class CategoryQueryImpl implements CategoryQueryService {
     }
 
     @Override
+    public void modifyCategory(Long id, String name) {
+        Category category = categoryRepository.findByIdEquals(id).get(0);
+        category.setName(name);
+        categoryRepository.save(category);
+    }
+
+    @Override
     public void deleteCategoryById(Long id) {
         categoryRepository.deleteByIdEquals(id);
     }

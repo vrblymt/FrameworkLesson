@@ -7,5 +7,6 @@ public interface CategoryQueryService {
     Collection<Category> findById(Long id);
     Collection<Category> findByName(String name);
     void addNewCategory(Category category);
+    void modifyCategory(Long id, String name);
     void deleteCategoryById(Long id);
 }

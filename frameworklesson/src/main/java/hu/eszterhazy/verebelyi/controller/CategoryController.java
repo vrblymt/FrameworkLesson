@@ -43,6 +43,14 @@ public class CategoryController {
         categoryQueryService.addNewCategory(category);
     }
 
+    @RequestMapping(value="/modify", method = RequestMethod.POST)
+    public void addNewCategory(
+            @RequestParam(name= "id", required = true) Long id,
+            @RequestParam(name = "name", required = true)String name
+    ){
+        categoryQueryService.modifyCategory(id, name);
+    }
+
     @Transactional
     @RequestMapping(value="/delete", method = RequestMethod.POST)
     public void deleteCategory(

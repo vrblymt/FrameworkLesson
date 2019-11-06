@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface AddressRepository extends CrudRepository<Address, Long> {
     List<Address> findAddressByIdEquals(Long id);
+    List<Address> findByAddressContains(String address);
     void deleteAddressByIdEquals(Long id);
 }
