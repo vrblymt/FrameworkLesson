@@ -1,5 +1,6 @@
 package hu.eszterhazy.verebelyi.api.Address;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 
 public interface AddressQueryService {

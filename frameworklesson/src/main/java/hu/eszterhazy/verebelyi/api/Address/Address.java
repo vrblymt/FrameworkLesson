@@ -1,9 +1,13 @@
 package hu.eszterhazy.verebelyi.api.Address;
 
 
+import hu.eszterhazy.verebelyi.api.City.City;
+
 import javax.persistence.*;
 import java.awt.*;
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="address")
@@ -15,21 +19,30 @@ public class Address {
     private String address;
     private String address2;
     private String district;
-    @Column(name="city_id", nullable = false)
+    @Column(name = "city_id",insertable = false, updatable = false)
     private Long cityId;
+
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
+    }
+
     @Column(name = "postal_code", nullable = true)
     private String postalCode;
     private String phone;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "city_id", nullable = false, referencedColumnName = "city_id")
+    private City city;
     public Address(){
 
     }
-    public Address(String address, String district, Long cityId, String postalCode, String phone) {
+    public Address(String address, String district, Long cityId, String postalCode, String phone, Timestamp lastUpdate) {
         this.address = address;
         this.district = district;
-        this.cityId = cityId;
         this.postalCode = postalCode;
+        this.cityId = cityId;
         this.phone = phone;
+        this.lastUpdate = lastUpdate;
     }
 
     @Override
@@ -39,9 +52,9 @@ public class Address {
                 ", address='" + address + '\'' +
                 ", address2='" + address2 + '\'' +
                 ", district='" + district + '\'' +
-                ", cityId=" + cityId +
                 ", postalCode='" + postalCode + '\'' +
                 ", phone='" + phone + '\'' +
+                ", city=" + city +
                 ", lastUpdate=" + lastUpdate +
                 '}';
     }
@@ -78,12 +91,12 @@ public class Address {
         this.district = district;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public City getCity() {
+        return city;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public String getPostalCode() {
@@ -103,15 +116,15 @@ public class Address {
     }
 
 
-    public Date getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
     @Column(name="last_update")
-    private Date lastUpdate;
+    private Timestamp lastUpdate;
 
 }

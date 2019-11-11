@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.awt.*;
+import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.Date;
 
 @RestController
 @RequestMapping(value = "/address")
@@ -38,9 +40,11 @@ public class AddressController {
             @RequestParam(name = "district", required = true) String district,
             @RequestParam(name="cityId", required = true) String cityId,
             @RequestParam(name="postalcode", required = true) String postalcode,
-            @RequestParam(name="phone", required =  true) String phone){
+            @RequestParam(name="phone", required =  true) String phone)
+    {
         Long city = Long.decode(cityId);
-        addressQueryService.addAddress(new Address(address, district, city, postalcode, phone));
+        Date date = new Date();
+        addressQueryService.addAddress(new Address(address, district, city, postalcode, phone, new Timestamp(date.getTime())));
     }
 
     @RequestMapping(value = "/modify", method = RequestMethod.POST)

@@ -2,6 +2,7 @@ package hu.eszterhazy.verebelyi.api.Address;
 
 import hu.eszterhazy.verebelyi.dao.AddressRepository;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 
 public class AddressQueryImpl implements AddressQueryService {

@@ -8,6 +8,8 @@ import hu.eszterhazy.verebelyi.api.Category.CategoryQueryImpl;
 import hu.eszterhazy.verebelyi.api.Category.CategoryQueryService;
 import hu.eszterhazy.verebelyi.api.City.CityQueryImpl;
 import hu.eszterhazy.verebelyi.api.City.CityQueryService;
+import hu.eszterhazy.verebelyi.api.Costumer.CostumerQueryImpl;
+import hu.eszterhazy.verebelyi.api.Costumer.CostumerQueryService;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryImpl;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryService;
 import hu.eszterhazy.verebelyi.api.Film.FilmQueryImpl;
@@ -57,5 +59,9 @@ public class WebConfiguration {
     @Bean(name = "filmActorQueryService")
     public FilmActorQueryService filmActorQueryService(FilmActorRepository filmActorRepository){
         return new FilmActorQueryImpl(filmActorRepository);
+    }
+    @Bean(name = "CostumerQueryService")
+    public CostumerQueryService costumerQueryService(CostumerRepository costumerRepository){
+        return new CostumerQueryImpl(costumerRepository);
     }
 }
