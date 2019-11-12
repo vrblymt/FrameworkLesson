@@ -3,11 +3,9 @@ package hu.eszterhazy.verebelyi.controller;
 import hu.eszterhazy.verebelyi.api.Address.Address;
 import hu.eszterhazy.verebelyi.api.Address.AddressQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.geo.Point;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.awt.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Date;

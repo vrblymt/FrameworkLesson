@@ -4,11 +4,10 @@ import hu.eszterhazy.verebelyi.api.Country.Country;
 import hu.eszterhazy.verebelyi.api.Country.CountryQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.transaction.Transactional;
-import java.io.OptionalDataException;
+import java.sql.Timestamp;
 import java.util.Collection;
-import java.util.Optional;
+import java.util.Date;
 
 @RestController
 @RequestMapping(value = "/country")
@@ -34,7 +33,8 @@ public class CountryController {
     public void addNewCountry(
             @RequestParam(name="country", required = true) String country
     ){
-                countryQueryService.addCountry(new Country(country));
+        Date date =new Date();
+                countryQueryService.addCountry(new Country(country, new Timestamp(date.getTime())));
     }
 
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
